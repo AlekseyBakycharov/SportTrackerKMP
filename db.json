@@ -1,0 +1,32 @@
+{
+  "workouts": [
+    { "id": 1, "userId": 1, "activity": "Running", "duration": 45, "calories": 400, "date": "2026-02-06" },
+    { "id": 2, "userId": 1, "activity": "Swimming", "duration": 60, "calories": 500, "date": "2026-02-05" },
+    { "id": 3, "userId": 1, "activity": "Cycling", "duration": 30, "calories": 250, "date": "2026-02-04" },
+    { "id": 4, "userId": 1, "activity": "Yoga", "duration": 40, "calories": 150, "date": "2026-02-03" },
+    { "id": 5, "userId": 1, "activity": "Running", "duration": 50, "calories": 450, "date": "2026-02-02" }
+  ],
+  "steps": [
+    { "id": 1, "userId": 1, "count": 12500, "goal": 10000, "date": "2026-02-06" },
+    { "id": 2, "userId": 1, "count": 8200, "goal": 10000, "date": "2026-02-05" },
+    { "id": 3, "userId": 1, "count": 15000, "goal": 10000, "date": "2026-02-04" },
+    { "id": 4, "userId": 1, "count": 6700, "goal": 10000, "date": "2026-02-03" },
+    { "id": 5, "userId": 1, "count": 11000, "goal": 10000, "date": "2026-02-02" }
+  ],
+  "sleep": [
+    { "id": 1, "userId": 1, "hours": 7.5, "quality": "good", "bedtime": "23:30", "wakeup": "07:00", "date": "2026-02-06" },
+    { "id": 2, "userId": 1, "hours": 6.0, "quality": "poor", "bedtime": "01:00", "wakeup": "07:00", "date": "2026-02-05" },
+    { "id": 3, "userId": 1, "hours": 8.0, "quality": "excellent", "bedtime": "22:30", "wakeup": "06:30", "date": "2026-02-04" },
+    { "id": 4, "userId": 1, "hours": 5.5, "quality": "poor", "bedtime": "02:00", "wakeup": "07:30", "date": "2026-02-03" },
+    { "id": 5, "userId": 1, "hours": 7.0, "quality": "good", "bedtime": "23:00", "wakeup": "06:00", "date": "2026-02-02" }
+  ],
+  "goals": [
+    { "id": 1, "userId": 1, "type": "steps", "target": 10000, "current": 12500, "unit": "steps" },
+    { "id": 2, "userId": 1, "type": "calories", "target": 500, "current": 400, "unit": "kcal" },
+    { "id": 3, "userId": 1, "type": "sleep", "target": 8.0, "current": 7.5, "unit": "hours" },
+    { "id": 4, "userId": 1, "type": "workouts", "target": 5, "current": 3, "unit": "sessions/week" }
+  ],
+  "users": [
+    { "id": 1, "name": "Aleksei", "age": 31, "weight": 75, "height": 178 }
+  ]
+}
