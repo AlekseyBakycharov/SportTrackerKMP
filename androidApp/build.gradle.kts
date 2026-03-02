@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinx.serialization) // ← добавь
 }
 
 android {
@@ -42,5 +43,16 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.navigation.compose)
+
+    //koin
+    implementation(libs.koin.android)
+
+    //icons
+    implementation(libs.material.icons.extended)
+
+    //date time
+    implementation(libs.kotlinx.datetime)
+
     debugImplementation(libs.compose.ui.tooling)
 }

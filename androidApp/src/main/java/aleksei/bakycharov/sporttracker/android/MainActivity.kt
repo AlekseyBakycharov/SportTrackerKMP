@@ -1,40 +1,51 @@
 package aleksei.bakycharov.sporttracker.android
 
+import aleksei.bakycharov.sporttracker.android.navigation.NavGraph
+import aleksei.bakycharov.sporttracker.android.ui.components.BottomNavBar
+import aleksei.bakycharov.sporttracker.android.ui.theme.FitnessTrackerTheme
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import aleksei.bakycharov.sporttracker.Greeting
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    GreetingView(Greeting().greet())
-                }
+            FitnessTrackerTheme {
+                FitnessApp()
             }
         }
     }
 }
 
 @Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
+fun FitnessApp() {
+    val navController = rememberNavController()
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
+    Scaffold(
+        bottomBar = {
+            BottomNavBar(
+                navController = navController,
+                onNavigate = { screen ->
+                    navController.navigate(screen) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Box(modifier = Modifier.padding(padding)) {
+            NavGraph(navController)
+        }
     }
 }

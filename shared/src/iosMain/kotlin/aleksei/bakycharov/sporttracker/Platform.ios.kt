@@ -1,9 +1,6 @@
 package aleksei.bakycharov.sporttracker
 
-import platform.UIKit.UIDevice
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.darwin.Darwin
 
-class IOSPlatform: Platform {
-    override val name: String = UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
-}
-
-actual fun getPlatform(): Platform = IOSPlatform()
+actual fun createPlatformEngine(): HttpClientEngine = Darwin.create()

@@ -1,7 +1,6 @@
 package aleksei.bakycharov.sporttracker
 
-class AndroidPlatform : Platform {
-    override val name: String = "Android ${android.os.Build.VERSION.SDK_INT}"
-}
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.okhttp.OkHttp
 
-actual fun getPlatform(): Platform = AndroidPlatform()
+actual fun createPlatformEngine(): HttpClientEngine = OkHttp.create()

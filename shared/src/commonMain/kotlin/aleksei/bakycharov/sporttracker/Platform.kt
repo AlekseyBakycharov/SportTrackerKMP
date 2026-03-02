@@ -1,7 +1,5 @@
 package aleksei.bakycharov.sporttracker
 
-interface Platform {
-    val name: String
-}
+import io.ktor.client.engine.HttpClientEngine
 
-expect fun getPlatform(): Platform
+expect fun createPlatformEngine(): HttpClientEngine
