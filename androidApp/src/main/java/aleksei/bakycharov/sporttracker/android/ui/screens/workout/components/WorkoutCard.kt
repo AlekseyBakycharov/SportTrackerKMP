@@ -1,5 +1,6 @@
 package aleksei.bakycharov.sporttracker.android.ui.screens.workout.components
 
+import aleksei.bakycharov.sporttracker.android.ui.screens.workout.model.WorkoutItem
 import aleksei.bakycharov.sporttracker.android.ui.theme.Blue
 import aleksei.bakycharov.sporttracker.android.ui.theme.FitnessTrackerTheme
 import aleksei.bakycharov.sporttracker.android.ui.theme.Orange

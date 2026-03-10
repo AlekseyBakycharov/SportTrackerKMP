@@ -1,12 +1,10 @@
-package aleksei.bakycharov.sporttracker.android.ui.screens.home.components
+package aleksei.bakycharov.sporttracker.android.ui.screens.sleep.components
 
-import aleksei.bakycharov.sporttracker.android.ui.components.ChartLine
-import aleksei.bakycharov.sporttracker.android.ui.components.SmoothLineChart
-import aleksei.bakycharov.sporttracker.android.ui.theme.Blue
-import aleksei.bakycharov.sporttracker.android.ui.theme.BlueLightBg
+import aleksei.bakycharov.sporttracker.android.ui.screens.sleep.model.SleepNightItem
+import aleksei.bakycharov.sporttracker.android.ui.theme.CardBackground
 import aleksei.bakycharov.sporttracker.android.ui.theme.FitnessTrackerTheme
-import aleksei.bakycharov.sporttracker.android.ui.theme.Orange
-import aleksei.bakycharov.sporttracker.android.ui.theme.Teal
+import aleksei.bakycharov.sporttracker.android.ui.theme.Purple
+import aleksei.bakycharov.sporttracker.android.ui.theme.PurpleBg
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,7 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.material.icons.filled.Nightlight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -32,14 +30,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun WeeklyActivitySection(
+fun SleepHistorySection(
+    nights: List<SleepNightItem>,
     modifier: Modifier = Modifier,
     animationKey: String = ""
 ) {
@@ -49,32 +47,12 @@ fun WeeklyActivitySection(
         animationPlayed = true
     }
 
-    // Mocks
-    val stepsData = listOf(
-        "20.02" to 3500f,
-        "21.02" to 2800f,
-        "22.02" to 3200f,
-        "23.02" to 1800f,
-        "24.02" to 2500f,
-        "25.02" to 4200f,
-        "26.02" to 4500f
-    )
-    val caloriesData = listOf(
-        "20.02" to 200f,
-        "21.02" to 150f,
-        "22.02" to 180f,
-        "23.02" to 100f,
-        "24.02" to 250f,
-        "25.02" to 300f,
-        "26.02" to 280f
-    )
-
     Card(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = CardBackground),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
@@ -82,40 +60,38 @@ fun WeeklyActivitySection(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Surface(
-                    shape = CircleShape,
-                    color = BlueLightBg
-                ) {
+                Surface(shape = CircleShape, color = PurpleBg) {
                     Icon(
-                        imageVector = Icons.Filled.TrendingUp,
-                        contentDescription = null,
-                        tint = Blue,
+                        imageVector = Icons.Filled.Nightlight, null,
+                        tint = Purple,
                         modifier = Modifier.padding(8.dp).size(20.dp)
                     )
                 }
-                Text(
-                    text = "Активность за неделю",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Text("История ночей", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            SmoothLineChart(
-                lines = listOf(
-                    ChartLine(stepsData, Teal, "Шаги"),
-                    ChartLine(caloriesData, Orange, "Калории")
-                ),
-                animationPlayed = animationPlayed,
-                showTooltip = true
-            )
+            Spacer(modifier = Modifier.height(12.dp))
+
+            nights.forEachIndexed { index, night ->
+                SleepNightCard(
+                    night = night,
+                    animationPlayed = animationPlayed,
+                    delay = index * 100
+                )
+                if (index < nights.lastIndex) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+            }
         }
     }
 }
 
 @Preview
 @Composable
-fun WeeklyActivitySectionPreview() {
+fun SleepHistorySectionPreview() {
     FitnessTrackerTheme {
-        WeeklyActivitySection()
+        val list = listOf(SleepNightItem("чт, 26 февр.", 9.6f, 2.9f, 30, 6.8f, 71, 10, "Отлично"))
+        SleepHistorySection(
+            nights = list
+        )
     }
 }

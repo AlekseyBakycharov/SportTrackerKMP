@@ -1,5 +1,6 @@
 package aleksei.bakycharov.sporttracker.android.ui.screens.workout.components
 
+import aleksei.bakycharov.sporttracker.android.ui.screens.workout.model.WorkoutItem
 import aleksei.bakycharov.sporttracker.android.ui.theme.BlueLightBg
 import aleksei.bakycharov.sporttracker.android.ui.theme.CardBackground
 import aleksei.bakycharov.sporttracker.android.ui.theme.FitnessTrackerTheme

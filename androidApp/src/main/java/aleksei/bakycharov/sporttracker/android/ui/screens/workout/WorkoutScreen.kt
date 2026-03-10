@@ -4,7 +4,7 @@ import aleksei.bakycharov.sporttracker.android.ui.screens.workout.components.Int
 import aleksei.bakycharov.sporttracker.android.ui.screens.workout.components.IntensityFilter
 import aleksei.bakycharov.sporttracker.android.ui.screens.workout.components.RecentWorkouts
 import aleksei.bakycharov.sporttracker.android.ui.screens.workout.components.WorkoutHeader
-import aleksei.bakycharov.sporttracker.android.ui.screens.workout.components.WorkoutItem
+import aleksei.bakycharov.sporttracker.android.ui.screens.workout.model.WorkoutItem
 import aleksei.bakycharov.sporttracker.android.ui.theme.Background
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

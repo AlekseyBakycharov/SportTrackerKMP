@@ -15,6 +15,8 @@ val Orange = Color(0xFFFF9800)
 val OrangeDark = Color(0xFFFF6B35)
 val Red = Color(0xFFEF5350)
 val Teal = Color(0xFF009688)
+val Yellow = Color(0xFFFFD600)
+val YellowLight = Color(0xFFFFF9C4)
 
 // Background
 val Background = Color(0xFFF5F5F5)
